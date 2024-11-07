@@ -49,6 +49,31 @@ jobs:
 
               final_changelog += "  " + changeline + "\n"
 
+              if changeline.startswith("- **Product_Impact:**"):
+                  final_changelog += "\n" + "- " + pr_link + "\n"
+
+              final_changelog += "  " + changeline + "\n"
+
+              if changeline.startswith("- **Addresses:**"):
+                  final_changelog += "\n" + "- " + pr_link + "\n"
+
+              final_changelog += "  " + changeline + "\n"
+
+              if changeline.startswith("- **Components:**"):
+                  final_changelog += "\n" + "- " + pr_link + "\n"
+
+              final_changelog += "  " + changeline + "\n"
+
+              if changeline.startswith("- **Breaking:**"):
+                  final_changelog += "\n" + "- " + pr_link + "\n"
+
+              final_changelog += "  " + changeline + "\n"
+
+              if changeline.startswith("- **Impact_a11y:**"):
+                  final_changelog += "\n" + "- " + pr_link + "\n"
+
+              final_changelog += "  " + changeline + "\n"
+
               if changeline.startswith("- **Guidance:**"):
                   final_changelog += "\n" + pr_link_ref + "\n"
 
