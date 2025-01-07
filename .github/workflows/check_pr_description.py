@@ -41,3 +41,14 @@ def validate_changelog(description):
         print(f"[DO NOT REMOVE-USED BY GH ACTION] CHANGELOG END is missing: {changelog_end}")
         return False
     return True
+
+
+
+def check_pr_description(event_path):
+    """Check all fields in the PR description and validate their values."""
+    description = get_pr_description(event_path)
+    
+    # Check if changelog markers are present
+    if not validate_changelog(description):
+        return False
+
