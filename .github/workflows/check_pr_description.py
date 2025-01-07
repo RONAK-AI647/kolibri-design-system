@@ -27,3 +27,17 @@ def check_field(description, field_name):
         field_value = match.group(0).strip()
         return field_value != DEFAULT_VALUES[field_name]
     return False
+
+
+def validate_changelog(description):
+    """Check if the changelog start and end markers are present in the PR description."""
+    changelog_start = "<!-- [DO NOT REMOVE-USED BY GH ACTION] CHANGELOG START -->"
+    changelog_end = "<!-- [DO NOT REMOVE-USED BY GH ACTION] CHANGELOG END -->"
+    
+    if changelog_start not in description:
+        print(f"[DO NOT REMOVE-USED BY GH ACTION] CHANGELOG START is missing: {changelog_start}")
+        return False
+    if changelog_end not in description:
+        print(f"[DO NOT REMOVE-USED BY GH ACTION] CHANGELOG END is missing: {changelog_end}")
+        return False
+    return True
