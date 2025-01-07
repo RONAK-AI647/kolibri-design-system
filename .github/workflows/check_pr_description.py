@@ -51,4 +51,13 @@ def check_pr_description(event_path):
     # Check if changelog markers are present
     if not validate_changelog(description):
         return False
+    
+    # Check each field against the default value
+    results = {}
+    for field_name in DEFAULT_VALUES.keys():
+        is_valid = check_field(description, field_name)
+        results[field_name] = is_valid
+        print(f"{field_name}: {'Valid' if is_valid else 'Invalid'}")
+    
+    return results
 
