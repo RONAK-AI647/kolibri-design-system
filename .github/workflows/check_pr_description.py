@@ -74,4 +74,16 @@ def main():
     # Set output variables for GitHub Actions
     for field, valid in results.items():
         print(f"contains{field.replace(' ', '')}={str(valid).lower()}")
+
+           
+    # Final validation check: Ensure all fields are valid
+    if all(results.values()):
+        print("All required fields are properly filled.")
+        exit(0)
+    else:
+        print("Changelog section is missing or does not contain the required details.")
+        exit(1)
+
+if __name__ == "__main__":
+    main()
     
