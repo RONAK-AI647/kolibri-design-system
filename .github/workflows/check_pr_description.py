@@ -61,3 +61,17 @@ def check_pr_description(event_path):
     
     return results
 
+
+
+def main():
+    event_path = os.getenv('GITHUB_EVENT_PATH')
+    if not event_path:
+        print("Error: GITHUB_EVENT_PATH environment variable is not set.")
+        exit(1)
+
+    results = check_pr_description(event_path)
+    
+    # Set output variables for GitHub Actions
+    for field, valid in results.items():
+        print(f"contains{field.replace(' ', '')}={str(valid).lower()}")
+    
